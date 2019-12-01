@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="css/text1.css" type="text/css"rel="stylesheet" />
+    <script src ="js/demo.js"></script>
+    <script>
+        //自己试了很久想像何学长那样的用map把取回的数据弄整齐，但都没成功，虽然很想再试试，可是时间不太允许，所以放弃了。
+        //只能丑陋的把数据取回来，分页也不太懂怎么做
+        //之前的做法不小心被我删掉了，但核心就是想把取回的数据变成一个个的数组，让后再把数组的值一个个弄到li里，
+        //但是从取回的数据来看即使成功了，也做不好看，所以还是取回数据时有根本性的问题，怎么让取回数据变得更简洁，是一个问题。
+        window.onload=function(){
+            let btn = document.querySelector('#btn');
+            let API = 'https://music.niubishanshan.top/api/v2/music/search/';
+            let text1 = document.querySelector('#textarea');
+            let div = document.querySelector('#div1');
+            let ul = document.getElementById('ul1');
+            btn.onclick = function(){
+                if(text1.value==''){
+                    alert('请输入内容');
+                    return false;
+                }
+                else{
+                let key = {};
+                key = text1.value;
+                ajax(API,{   //简单模拟jq中的封装方式
+                    key
+              },function(xhr){
+                let li = document.createElement('li');
+                let res = [];
+                res = xhr.responseText.split(',');
+                li.innerHTML = res;
+                ul.insertBefore(li,ul.children[0]);     
+            },function(xhr){alert("请求发生错误或无资源查询"+xhr.status)}) 
+        }        
+    }                             
+}
+
+    </script>
+<body>
+    <div id = 'mian'><input type=text id='textarea'><button id="btn">发送</button></div>
+    <div id ='body' >
+    <ul id='ul1'>
+    </ul>
+    </div>
+  
+
+    
+    
+</body>
+</html>

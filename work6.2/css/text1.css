@@ -1,0 +1,23 @@
+*{
+    margin:0;
+}
+#mian{
+    margin:0 auto;
+    margin-top:200px;
+    text-align:center;
+}
+#body{
+    margin:0 auto;
+    margin-top: 250px;
+}
+button{
+    line-height: 20px;
+    margin-bottom: 20px;
+    height: 35px;
+    width: 70px;
+}
+#textarea{
+    line-height: 20px;
+    width: 350px;
+    height: 30px;
+}
